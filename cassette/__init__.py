@@ -37,3 +37,10 @@ def play(filename):
     insert(filename)
     yield
     eject()
+
+
+@contextlib.contextmanager
+def backfire():
+    patch(None, backfire=True)
+    yield
+    unpatch()
