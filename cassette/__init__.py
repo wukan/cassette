@@ -37,3 +37,11 @@ def play(filename):
     insert(filename)
     yield
     eject()
+
+
+@contextlib.contextmanager
+def ensure_no_http_requests():
+    """Prevent code from making outbound HTTP requests."""
+    patch(None, ensure_no_http_requests=True)
+    yield
+    unpatch()
